@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Leave_formModelStoreContainer" CdmEntityContainer="Leave_formEntities">
+    <EntitySetMapping Name="Employee_information">
+      <EntityTypeMapping TypeName="Leave_formModel.Employee_information">
+        <MappingFragment StoreEntitySet="Employee_information">
+          <ScalarProperty Name="Employ_Id" ColumnName="Employ_Id" />
+          <ScalarProperty Name="Employ_Name" ColumnName="Employ_Name" />
+          <ScalarProperty Name="Employ_Email" ColumnName="Employ_Email" />
+          <ScalarProperty Name="Department" ColumnName="Department" />
+          <ScalarProperty Name="Mobile_number" ColumnName="Mobile_number" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+          <ScalarProperty Name="Superviser_Id" ColumnName="Superviser_Id" />
+          <ScalarProperty Name="Designation" ColumnName="Designation" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Leave_information">
+      <EntityTypeMapping TypeName="Leave_formModel.Leave_information">
+        <MappingFragment StoreEntitySet="Leave_information">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Employee_id" ColumnName="Employee_id" />
+          <ScalarProperty Name="Absence_type" ColumnName="Absence_type" />
+          <ScalarProperty Name="From_date" ColumnName="From_date" />
+          <ScalarProperty Name="To_date" ColumnName="To_date" />
+          <ScalarProperty Name="Number_of_dayes" ColumnName="Number_of_dayes" />
+          <ScalarProperty Name="Reason_of_absence" ColumnName="Reason_of_absence" />
+          <ScalarProperty Name="Supperviser_status" ColumnName="Supperviser_status" />
+          <ScalarProperty Name="Supperviser_comments" ColumnName="Supperviser_comments" />
+          <ScalarProperty Name="HR_status" ColumnName="HR_status" />
+          <ScalarProperty Name="HR_comments" ColumnName="HR_comments" />
+          <ScalarProperty Name="Leave_status" ColumnName="Leave_status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

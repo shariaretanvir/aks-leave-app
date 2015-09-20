@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Leave_formModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="Leave_formEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="Employee_information" EntityType="Leave_formModel.Employee_information" />
+    <EntitySet Name="Leave_information" EntityType="Leave_formModel.Leave_information" />
+    <AssociationSet Name="FK_Leave_information_Leave_information" Association="Leave_formModel.FK_Leave_information_Leave_information">
+      <End Role="Employee_information" EntitySet="Employee_information" />
+      <End Role="Leave_information" EntitySet="Leave_information" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Employee_information">
+    <Key>
+      <PropertyRef Name="Employ_Id" />
+    </Key>
+    <Property Name="Employ_Id" Type="Int32" Nullable="false" />
+    <Property Name="Employ_Name" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="Employ_Email" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="Department" Type="String" MaxLength="35" Unicode="true" FixedLength="true" />
+    <Property Name="Mobile_number" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="Role" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="Superviser_Id" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
+    <Property Name="Designation" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="Leave_information" Relationship="Leave_formModel.FK_Leave_information_Leave_information" FromRole="Employee_information" ToRole="Leave_information" />
+  </EntityType>
+  <EntityType Name="Leave_information">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Employee_id" Type="Int32" />
+    <Property Name="Absence_type" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
+    <Property Name="From_date" Type="DateTime" Precision="0" />
+    <Property Name="To_date" Type="DateTime" Precision="0" />
+    <Property Name="Number_of_dayes" Type="String" MaxLength="4" Unicode="false" FixedLength="false" />
+    <Property Name="Reason_of_absence" Type="String" MaxLength="1000" Unicode="false" FixedLength="false" />
+    <Property Name="Supperviser_status" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="Supperviser_comments" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+    <Property Name="HR_status" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="HR_comments" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+    <Property Name="Leave_status" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="Employee_information" Relationship="Leave_formModel.FK_Leave_information_Leave_information" FromRole="Leave_information" ToRole="Employee_information" />
+  </EntityType>
+  <Association Name="FK_Leave_information_Leave_information">
+    <End Role="Employee_information" Type="Leave_formModel.Employee_information" Multiplicity="0..1" />
+    <End Role="Leave_information" Type="Leave_formModel.Leave_information" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee_information">
+        <PropertyRef Name="Employ_Id" />
+      </Principal>
+      <Dependent Role="Leave_information">
+        <PropertyRef Name="Employee_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Leave_formModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="Leave_formModelStoreContainer">
+    <EntitySet Name="Employee_information" EntityType="Leave_formModel.Store.Employee_information" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Leave_information" EntityType="Leave_formModel.Store.Leave_information" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_Leave_information_Leave_information" Association="Leave_formModel.Store.FK_Leave_information_Leave_information">
+      <End Role="Employee_information" EntitySet="Employee_information" />
+      <End Role="Leave_information" EntitySet="Leave_information" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Employee_information">
+    <Key>
+      <PropertyRef Name="Employ_Id" />
+    </Key>
+    <Property Name="Employ_Id" Type="int" Nullable="false" />
+    <Property Name="Employ_Name" Type="varchar" MaxLength="45" />
+    <Property Name="Employ_Email" Type="varchar" MaxLength="45" />
+    <Property Name="Department" Type="nchar" MaxLength="35" />
+    <Property Name="Mobile_number" Type="varchar" MaxLength="20" />
+    <Property Name="Role" Type="varchar" MaxLength="45" />
+    <Property Name="Superviser_Id" Type="varchar" MaxLength="15" />
+    <Property Name="Designation" Type="varchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="Leave_information">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Employee_id" Type="int" />
+    <Property Name="Absence_type" Type="varchar" MaxLength="15" />
+    <Property Name="From_date" Type="varchar" MaxLength="25" />
+    <Property Name="To_date" Type="varchar" MaxLength="25" />
+    <Property Name="Number_of_dayes" Type="varchar" MaxLength="4" />
+    <Property Name="Reason_of_absence" Type="varchar" MaxLength="1000" />
+    <Property Name="Supperviser_status" Type="varchar" MaxLength="10" />
+    <Property Name="Supperviser_comments" Type="varchar" MaxLength="500" />
+    <Property Name="HR_status" Type="varchar" MaxLength="10" />
+    <Property Name="HR_comments" Type="varchar" MaxLength="500" />
+    <Property Name="Leave_status" Type="varchar" MaxLength="15" />
+  </EntityType>
+  <Association Name="FK_Leave_information_Leave_information">
+    <End Role="Employee_information" Type="Leave_formModel.Store.Employee_information" Multiplicity="0..1" />
+    <End Role="Leave_information" Type="Leave_formModel.Store.Leave_information" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee_information">
+        <PropertyRef Name="Employ_Id" />
+      </Principal>
+      <Dependent Role="Leave_information">
+        <PropertyRef Name="Employee_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

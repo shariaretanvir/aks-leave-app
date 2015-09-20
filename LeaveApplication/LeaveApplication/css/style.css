@@ -1,0 +1,52 @@
+.logo{
+	margin-top: 10px;
+}
+
+.request-form-title1{
+	background-color: #943032;
+	padding: 1px 0;
+	color: #fff;
+	margin: 10px 0;
+}
+
+.request-form-title2{
+	background-color: #943032;
+	color: #fff;
+	margin-top: 75px;
+	margin-bottom: 20px;
+	padding: 1px 0;
+
+}
+
+
+.upperPortion2{
+	margin-bottom: 10px;
+}
+
+.comment-textArea{
+	width:97%;
+	margin: 0 auto;
+}
+
+#obligation-text{
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
+.checkboxes{
+	margin-left:10%;
+	margin-top: 10px;
+}
+
+.middleportion1, .lowerportion1{
+	margin-bottom: 10px;
+}
+
+.upperPortion1, .upperPortion2, .upperPortion3, .upperPortion4, .footer, .middleportion1, .middleportion2, .lowerportion1, .lowerportion2{
+	color:#943032;
+	
+}
+
+
+
+

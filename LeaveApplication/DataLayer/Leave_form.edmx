@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Leave_formModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="Leave_formModelStoreContainer">
+          <EntitySet Name="Employee_information" EntityType="Leave_formModel.Store.Employee_information" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Leave_information" EntityType="Leave_formModel.Store.Leave_information" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Leave_information_Leave_information" Association="Leave_formModel.Store.FK_Leave_information_Leave_information">
+            <End Role="Employee_information" EntitySet="Employee_information" />
+            <End Role="Leave_information" EntitySet="Leave_information" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Employee_information">
+          <Key>
+            <PropertyRef Name="Employ_Id" />
+          </Key>
+          <Property Name="Employ_Id" Type="int" Nullable="false" />
+          <Property Name="Employ_Name" Type="varchar" MaxLength="45" />
+          <Property Name="Employ_Email" Type="varchar" MaxLength="45" />
+          <Property Name="Department" Type="nchar" MaxLength="35" />
+          <Property Name="Mobile_number" Type="varchar" MaxLength="20" />
+          <Property Name="Role" Type="varchar" MaxLength="45" />
+          <Property Name="Superviser_Id" Type="varchar" MaxLength="15" />
+          <Property Name="Designation" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="Leave_information">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Employee_id" Type="int" />
+          <Property Name="Absence_type" Type="varchar" MaxLength="15" />
+          <Property Name="From_date" Type="varchar" MaxLength="25" />
+          <Property Name="To_date" Type="varchar" MaxLength="25" />
+          <Property Name="Number_of_dayes" Type="varchar" MaxLength="4" />
+          <Property Name="Reason_of_absence" Type="varchar" MaxLength="1000" />
+          <Property Name="Supperviser_status" Type="varchar" MaxLength="10" />
+          <Property Name="Supperviser_comments" Type="varchar" MaxLength="500" />
+          <Property Name="HR_status" Type="varchar" MaxLength="10" />
+          <Property Name="HR_comments" Type="varchar" MaxLength="500" />
+          <Property Name="Leave_status" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <Association Name="FK_Leave_information_Leave_information">
+          <End Role="Employee_information" Type="Leave_formModel.Store.Employee_information" Multiplicity="0..1" />
+          <End Role="Leave_information" Type="Leave_formModel.Store.Leave_information" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee_information">
+              <PropertyRef Name="Employ_Id" />
+            </Principal>
+            <Dependent Role="Leave_information">
+              <PropertyRef Name="Employee_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Leave_formModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="Leave_formEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Employee_information" EntityType="Leave_formModel.Employee_information" />
+          <EntitySet Name="Leave_information" EntityType="Leave_formModel.Leave_information" />
+          <AssociationSet Name="FK_Leave_information_Leave_information" Association="Leave_formModel.FK_Leave_information_Leave_information">
+            <End Role="Employee_information" EntitySet="Employee_information" />
+            <End Role="Leave_information" EntitySet="Leave_information" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Employee_information">
+          <Key>
+            <PropertyRef Name="Employ_Id" />
+          </Key>
+          <Property Name="Employ_Id" Type="Int32" Nullable="false" />
+          <Property Name="Employ_Name" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="Employ_Email" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="Department" Type="String" MaxLength="35" Unicode="true" FixedLength="true" />
+          <Property Name="Mobile_number" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="Role" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="Superviser_Id" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="Designation" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Leave_information" Relationship="Leave_formModel.FK_Leave_information_Leave_information" FromRole="Employee_information" ToRole="Leave_information" />
+        </EntityType>
+        <EntityType Name="Leave_information">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Employee_id" Type="Int32" />
+          <Property Name="Absence_type" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="From_date" Type="String" MaxLength="25" Unicode="false" FixedLength="false" />
+          <Property Name="To_date" Type="String" MaxLength="25" Unicode="false" FixedLength="false" />
+          <Property Name="Number_of_dayes" Type="String" MaxLength="4" Unicode="false" FixedLength="false" />
+          <Property Name="Reason_of_absence" Type="String" MaxLength="1000" Unicode="false" FixedLength="false" />
+          <Property Name="Supperviser_status" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="Supperviser_comments" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="HR_status" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="HR_comments" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="Leave_status" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Employee_information" Relationship="Leave_formModel.FK_Leave_information_Leave_information" FromRole="Leave_information" ToRole="Employee_information" />
+        </EntityType>
+        <Association Name="FK_Leave_information_Leave_information">
+          <End Role="Employee_information" Type="Leave_formModel.Employee_information" Multiplicity="0..1" />
+          <End Role="Leave_information" Type="Leave_formModel.Leave_information" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee_information">
+              <PropertyRef Name="Employ_Id" />
+            </Principal>
+            <Dependent Role="Leave_information">
+              <PropertyRef Name="Employee_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Leave_formModelStoreContainer" CdmEntityContainer="Leave_formEntities">
+          <EntitySetMapping Name="Employee_information">
+            <EntityTypeMapping TypeName="Leave_formModel.Employee_information">
+              <MappingFragment StoreEntitySet="Employee_information">
+                <ScalarProperty Name="Employ_Id" ColumnName="Employ_Id" />
+                <ScalarProperty Name="Employ_Name" ColumnName="Employ_Name" />
+                <ScalarProperty Name="Employ_Email" ColumnName="Employ_Email" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="Mobile_number" ColumnName="Mobile_number" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="Superviser_Id" ColumnName="Superviser_Id" />
+                <ScalarProperty Name="Designation" ColumnName="Designation" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Leave_information">
+            <EntityTypeMapping TypeName="Leave_formModel.Leave_information">
+              <MappingFragment StoreEntitySet="Leave_information">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Employee_id" ColumnName="Employee_id" />
+                <ScalarProperty Name="Absence_type" ColumnName="Absence_type" />
+                <ScalarProperty Name="From_date" ColumnName="From_date" />
+                <ScalarProperty Name="To_date" ColumnName="To_date" />
+                <ScalarProperty Name="Number_of_dayes" ColumnName="Number_of_dayes" />
+                <ScalarProperty Name="Reason_of_absence" ColumnName="Reason_of_absence" />
+                <ScalarProperty Name="Supperviser_status" ColumnName="Supperviser_status" />
+                <ScalarProperty Name="Supperviser_comments" ColumnName="Supperviser_comments" />
+                <ScalarProperty Name="HR_status" ColumnName="HR_status" />
+                <ScalarProperty Name="HR_comments" ColumnName="HR_comments" />
+                <ScalarProperty Name="Leave_status" ColumnName="Leave_status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
